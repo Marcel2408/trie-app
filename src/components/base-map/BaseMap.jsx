@@ -1,20 +1,60 @@
-import React from 'react';
-// import mapboxgl from "mapbox-gl";
+import React, { useEffect, useRef } from 'react';
+import mapboxgl from 'mapbox-gl';
+
 import './BaseMap.scss';
+import ReactDom from 'react-dom';
+import locations from '../../db/locations';
+import MapMarker from '../map-marker/MapMarker';
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const BaseMap = () => {
-  // mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+  const mapContainerRef = useRef(null);
 
-  // useEffect(() => {
-  //   new mapboxgl.Map({
-  //     container: "mapContainer",
-  //     style: "mapbox://styles/mapbox/streets-v11",
-  //     center: [-74.5, 40],
-  //     zoom: 9,
-  //   });
-  // }, []);
+  // initialize map when component mounts
+  useEffect(() => {
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      // center: [2.131958079960207, 41.33007125593857],
+      // zoom: 6
+    });
 
-  return <div id="mapContainer" className="map" />;
+    const bounds = new mapboxgl.LngLatBounds();
+
+    locations.forEach((loc) => {
+      // create marker
+      const markerHTML = document.createElement('div');
+      ReactDom.render(<MapMarker key={loc.id} location={loc} />, markerHTML);
+
+      // add marker to map
+      new mapboxgl.Marker({
+        element: markerHTML,
+        anchor: 'bottom',
+      })
+        .setLngLat(loc.coordinates)
+        .addTo(map);
+
+      // extends the map bpund to include current location
+      bounds.extend(loc.coordinates);
+    });
+
+    // fit all locations in the map bounds
+    map.fitBounds(bounds, {
+      padding: {
+        top: 75,
+        bottom: 75,
+      },
+    });
+
+    // add navigation control (the +/- zoom buttons)
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-right');
+
+    return () => map.remove();
+  }, []);
+
+  return <div className="map-container" ref={mapContainerRef} />;
 };
 
 export default BaseMap;

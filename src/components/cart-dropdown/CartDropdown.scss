@@ -1,0 +1,27 @@
+@import '../../sass/variables';
+
+.cart-dropdown {
+  position: absolute;
+  width: 240px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+  border: 1px solid $color-blue;
+  background-color: $color-white;
+  top: 60px;
+  right: 41px;
+  z-index: 5;
+
+  .cart-items {
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow: overlay;
+  }
+
+  a {
+    margin-top: auto; //to make sure the button is always at the bottom
+    margin-bottom: 0;
+  }
+}

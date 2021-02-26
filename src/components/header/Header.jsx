@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
 const Header = () => {
+  const isHidden = false;
   return (
     <header className="header section container">
       <div className="options">
@@ -12,7 +14,7 @@ const Header = () => {
         </Link>
       </div>
       <CartIcon />
-      {/* {isHidden ? null : <CartDropdown />} */}
+      {isHidden ? null : <CartDropdown />}
     </header>
   );
 };

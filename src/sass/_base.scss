@@ -12,12 +12,16 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-size: 1.6rem;
 }
 
 .app {
   min-height: 100vh;
+}
+
+.section {
+  padding: 3rem 0;
 }
 
 .container {

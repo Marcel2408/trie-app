@@ -47,7 +47,7 @@ const BaseMap = () => {
 
     // add navigation control (the +/- zoom buttons)
     const nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, 'top-right');
+    map.addControl(nav, 'bottom-right');
 
     return () => map.remove();
   }, []);

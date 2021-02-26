@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 
 import mapboxgl from 'mapbox-gl';
 
-import './App.css';
-// import fetchFakeData from './api/fetchFakeData';
-import locations from './db/locations';
-import MapMarker from './MapMarker';
+import './App.scss';
+import locations from '../../db/locations';
+import MapMarker from '../map-marker/MapMarker';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
-// mapboxgl.accessToken = 'pk.eyJ1IjoibWFyY2VsMjQwOCIsImEiOiJja2xsNnZjaHgybXI4MnBwN2gwNXVlaGFrIn0.K-mvVqxRO9zROrFzcDwxcQ';
 
 const App = () => {
   const mapContainerRef = useRef(null);
@@ -28,7 +26,7 @@ const App = () => {
     locations.forEach((loc) => {
       // create marker
       const markerHTML = document.createElement('div');
-      ReactDOM.render(<MapMarker key={loc.id} location={loc} map={map} />, markerHTML);
+      ReactDOM.render(<MapMarker key={loc.id} location={loc} />, markerHTML);
 
       // add marker to map
       new mapboxgl.Marker({

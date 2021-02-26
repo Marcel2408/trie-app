@@ -1,6 +1,6 @@
 // import React, { useEffect } from "react";
 // import mapboxgl from "mapbox-gl";
-import "./BaseMap.css";
+import './BaseMap.scss';
 
 // const BaseMap = () => {
 //   // mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;

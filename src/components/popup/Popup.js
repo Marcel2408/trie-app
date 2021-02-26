@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import './Popup.scss';
 
 const Popup = ({ location }) => {
   const { id, name, adress } = location;

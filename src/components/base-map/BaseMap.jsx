@@ -16,8 +16,6 @@ const BaseMap = () => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      // center: [2.131958079960207, 41.33007125593857],
-      // zoom: 6
     });
 
     const bounds = new mapboxgl.LngLatBounds();
@@ -54,7 +52,11 @@ const BaseMap = () => {
     return () => map.remove();
   }, []);
 
-  return <div className="map-container" ref={mapContainerRef} />;
+  return (
+    <main className="basemap">
+      <div className="map-container" ref={mapContainerRef} />
+    </main>
+  );
 };
 
 export default BaseMap;

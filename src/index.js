@@ -12,7 +12,6 @@ ReactDOM.render(
         <App>
           <Route path="/" exact render={() => <Redirect to="/map" />} />
           <Route path="/map" exact component={BaseMap} />
-          <Route component={BaseMap} />
         </App>
       </Switch>
     </BrowserRouter>

@@ -1,0 +1,7 @@
+.marker {
+  background-image: url('./assets/pin.png');
+  background-size: cover;
+  width: 32px;
+  height: 40px;
+  cursor: pointer;
+}

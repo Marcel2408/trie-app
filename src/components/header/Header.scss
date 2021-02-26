@@ -10,17 +10,9 @@
 
   .options {
     height: 100%;
-    width: 50%;
-
+    margin: 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-    .option {
-      padding: .7rem 1rem;
-      cursor: pointer;
-      text-decoration: none;
-      color: $color-black;
-    }
   }
 }

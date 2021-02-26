@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <header className="header section container">
       <div className="options">
-        <Link className="option" to="/">
-          HOME
+        <Link className="option btn" to="/">
+          BACK TO MAP
         </Link>
       </div>
       <CartIcon />

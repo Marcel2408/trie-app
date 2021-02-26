@@ -1,0 +1,34 @@
+@import './variables';
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 2rem auto;
+  background-color: $color-blue;
+  color: $color-white;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: inherit;
+  font-family: inherit;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  outline: none;
+  transition: all 0.3s;
+  border: 2px solid $color-blue;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+  background-size: 226%;
+
+  &:hover {
+    border: 2px solid $color-blue;
+    background-position: 100%;
+    color: $color-blue;
+  }
+
+  &:active {
+    outline: none;
+  }
+}

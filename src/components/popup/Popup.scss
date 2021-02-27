@@ -1,7 +1,72 @@
+@import '../../sass/variables';
+
 .popup {
   position: absolute;
   top: 40px;
   width: 151px;
   background-color: #fff;
   padding: 1rem;
+  border-radius: 2px;
+
+  &__title {
+    color: $color-blue;
+  }
+
+  &__section {
+
+    display: flex;
+    align-items: center;
+
+    &--availability {
+      border-bottom: 1px $color-blue solid;
+    }
+
+    &--counter {
+      align-items: center;
+      // flex-direction: column;
+
+      p {
+        margin: 1rem 1.5rem;
+      }
+    }
+  }
+
+
+  &__change-btn {
+    padding: .25rem 1.5rem;
+    background: none;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+    &--add {
+      border: 1px $color-green solid;
+    }
+
+    &--substract {
+      border: 1px $color-coral-red solid;
+    }
+
+    &:active {
+      // transform: scale(0.95);
+      box-shadow: none;
+    }
+  }
+
+  &__change-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+    margin-right: .5rem;
+  }
+
+  &__btn {
+    margin: 0;
+    padding: .7rem 1.5rem;
+    width: 100%;
+  }
 }

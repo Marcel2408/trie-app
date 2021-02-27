@@ -8,14 +8,23 @@ import Popup from '../popup/Popup';
 const MapMarker = ({ location }) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const toggleClick = () => {
+  const handleClick = () => {
+    console.log(isClicked);
     //  popup on click
-    setIsClicked((prevClick) => !prevClick);
+    setIsClicked(true);
+  };
+
+  const handleMouseLeave = () => {
+    console.log(isClicked);
+    setIsClicked(false);
   };
 
   return (
-    <div onClick={toggleClick} id={location.id} className="marker">
-      {isClicked && <Popup onMouseOut={toggleClick} key={location.id} location={location} />}
+    <div>
+      <div onClick={handleClick} id={location.id} className="marker" />
+      {isClicked && (
+        <Popup handleMouseLeave={handleMouseLeave} key={location.id} location={location} />
+      )}
     </div>
   );
 };

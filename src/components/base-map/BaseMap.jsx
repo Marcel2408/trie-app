@@ -3,8 +3,11 @@ import mapboxgl from 'mapbox-gl';
 
 import './BaseMap.scss';
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
 import locations from '../../db/locations';
 import MapMarker from '../map-marker/MapMarker';
+
+import store from '../../redux/store';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -23,7 +26,12 @@ const BaseMap = () => {
     locations.forEach((loc) => {
       // create marker
       const markerHTML = document.createElement('div');
-      ReactDom.render(<MapMarker key={loc.id} location={loc} />, markerHTML);
+      ReactDom.render(
+        <Provider store={store}>
+          <MapMarker key={loc.id} location={loc} />
+        </Provider>,
+        markerHTML
+      );
 
       // add marker to map
       new mapboxgl.Marker({

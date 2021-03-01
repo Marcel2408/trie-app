@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { TOGGLE_CART_HIDDEN, ADD_TO_CART, UPDATE_CART_ITEM } from './cart.types';
+import { TOGGLE_CART_HIDDEN, ADD_TO_CART, REMOVE_FROM_CART } from './cart.types';
 
 export const toggleCartHidden = () => ({
   type: TOGGLE_CART_HIDDEN,
@@ -10,11 +10,7 @@ export const addToCart = (warehouse) => ({
   payload: warehouse,
 });
 
-export const updateCartItem = (warehouse, cartItems) => {
-  const index = cartItems.findIndex((item) => item.id === warehouse.id);
-  cartItems[index].quantity = warehouse.quantity;
-  return {
-    type: UPDATE_CART_ITEM,
-    payload: cartItems,
-  };
-};
+export const removeFromCart = (warehouse) => ({
+  type: REMOVE_FROM_CART,
+  payload: warehouse,
+});

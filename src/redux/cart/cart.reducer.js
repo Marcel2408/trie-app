@@ -1,15 +1,5 @@
-// setup initial state of hidden: true
-// cart reducer func
-// TOGGLE_CART_HIDDEN action.type
-// make the action type
-// make the action toggleCart passing the type
-// dispatch the action from cartIcon
-// add cartReducer to rootReducer
-// select the isHidden piece of state from the store in Header
-// commit
-
-import { TOGGLE_CART_HIDDEN, ADD_TO_CART, UPDATE_CART_ITEM } from './cart.types';
-import addItemToCart from './cart.utils';
+import { TOGGLE_CART_HIDDEN, ADD_TO_CART, REMOVE_FROM_CART } from './cart.types';
+import addItemToCart, { removeItemFromCart } from './cart.utils';
 
 const INITIAL_STATE_CART = {
   isHidden: true,
@@ -22,8 +12,8 @@ const cartReducer = (state = INITIAL_STATE_CART, action = {}) => {
       return { ...state, isHidden: !state.isHidden };
     case ADD_TO_CART:
       return { ...state, cartItems: addItemToCart(state.cartItems, action.payload) };
-    case UPDATE_CART_ITEM:
-      return { ...state, cartItems: action.payload };
+    case REMOVE_FROM_CART:
+      return { ...state, cartItems: removeItemFromCart(state.cartItems, action.payload) };
     default:
       return state;
   }

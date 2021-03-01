@@ -1,0 +1,39 @@
+@import '../../sass/variables';
+
+.checkout {
+  width: 55%;
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem auto 0;
+
+  &__header {
+    width: 100%;
+    height: 4rem;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-blue;
+  }
+
+  &__block {
+    text-transform: capitalize;
+    width: 23%;
+
+    &--name {
+      color: $color-blue;
+    }
+
+    &:last-child {
+      width: 8%;
+    }
+  }
+
+  &__total {
+    margin-top: 3rem;
+    margin-left: auto;
+    font-size: 3rem;
+  }
+}

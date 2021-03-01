@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Trie-challenge - Marcel Subirana
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bienvenidos a la Trie-app,
 
-## Available Scripts
+una app donde poder elegir entre los distintos almacenes disponibles en España y reservar los espacios que se requieran.
 
-In the project directory, you can run:
+Para poder iniciar el proyecto hay que seguir los siguientes pasos:
 
-### `npm start`
+## Preparación
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clona el repositorio:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+$ git clone https://github.com/Marcel2408/tier-app
+$ cd tier-app
+```
 
-### `npm test`
+Instala las dependencias:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+$ npm install
+```
 
-### `npm run build`
+Crea el archivo ```.env``` :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+$ touch .env
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Debido a que la app usa el mapa de [Mapbox](https://www.mapbox.com/), deberás acudir a su sitio web para crear un usuario y conseguir un token gratuito.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Una vez conseguido el token, rellena el archivo ```.env``` con la siguiente info:
 
-### `npm run eject`
+```
+REACT_APP_MAPBOX_ACCESS_TOKEN=<introduce tu Mapbox token>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Inicia la app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Desde el directorio raíz:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+$ npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Siendo una CRA, la app se inicia por defecto en el puerto localhost:3000.
 
-## Learn More
+## Notas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Stack: React con Hooks y Redux, junto a Sass como preprocesador de CSS.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para mayor calidad del código, el proyecto usa ESLint junto con el formateador Prettier.
 
-### Code Splitting
+Dependencias relevantes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Mapbox-gl](https://www.npmjs.com/package/mapbox-gl) para visualizar el mapa interactivo.
 
-### Analyzing the Bundle Size
+[Redux-logger](https://www.npmjs.com/package/redux-logger) como middleware para un mejor seguimiento de los cambios en el 'state' durante el desarrollo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[React-router-dom](https://www.npmjs.com/package/react-router-dom) para desarrollar el 'client-side' routing de esta SPA.
 
-### Making a Progressive Web App
+[Reselect](https://www.npmjs.com/package/reselect) para mejorar el rendimiento de la app evitando 'rerenderings' innecesarios cuando la parte del 'state' que afecta a un componente no cambia. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Commitizen](https://www.npmjs.com/package/commitizen) para mantener una estructura de 'commits' limpia y organizada. 
 
-### Advanced Configuration
+También destacar que para mejorar la eficiencia y velocidad de la app, pensando en futuras mejoras y escalabilidad, he usado React.lazy() en aquellos componentes que solo deben ser cargados cuando el usuario se dirige a su url, dividiendo así la carga en distintos archivos. Para los tiempos de carga he implantado un 'spinner' para una mejor experiencia de usuario.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Potenciales mejoras (próximos pasos)
 
-### Deployment
+Responsiveness: Adecuar la app a cualquier tipo de dispositivo mediante @media queries. Pensando en este punto, las medidas están implantadas en 'rem', para agilizar el proceso de adaptación con solamente variar la 'font-size' en el selector 'body'.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Popups: Los menús de selección de espacios en el mapa presentan alguna incomodidad a la hora de seleccionar rápidamente la cantidad, puesto que el mapa puede entender que el usuario quiere aumentar el zoom. Una alternativa puede ser hacer aparecer un submenú lateral para la selección de espacios en vez de seleccionar directamente sobre el mapa.
 
-### `npm run build` fails to minify
+Tests: Realizar unit, integration y E2E tests para asegurar el correcto funcionamiento de cada componente así como la interacción entre ellos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Sobre mí
+
+- Marcel Subirana - [Github](https://github.com/marcel2408) - [LinkedIn](https://www.linkedin.com/in/marcel-subirana-campanera/)

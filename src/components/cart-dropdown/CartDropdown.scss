@@ -15,9 +15,15 @@
 
   .cart-items {
     height: 240px;
+    margin-bottom: 1.4rem;
+
     display: flex;
     flex-direction: column;
     overflow: overlay;
+
+    .empty-message {
+      margin: 70px auto;
+    }
   }
 
   a {

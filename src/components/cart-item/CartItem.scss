@@ -1,0 +1,57 @@
+@import '../../sass/variables';
+
+.cart-item {
+  width: 100%;
+  padding: 1rem 0;
+  margin-bottom: .9rem;
+  margin-right: .5rem;
+  border-bottom: 1px $color-blue solid ;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+
+  &__icon {
+    position: relative;
+    background-image: url('../../assets/warehouse.svg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    transition: opacity .3s;
+  }
+
+  &__icon,
+  &__wrapper {
+    flex: 0 0 20%;
+  }
+
+  &__remove {
+    cursor: pointer;
+    font-size: 16px;
+    background: none;
+    color: $color-blue;
+    border: none;
+    outline: none;
+
+    &:hover {
+      color: $color-coral-red;
+    }
+  }
+
+  &__details {
+    margin-right: .5rem;
+    font-size: 1.3rem;
+    flex: 1;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    // justify-content: space-evenly;
+  }
+
+  &__name {
+    color: $color-blue;
+    font-weight: bold;
+  }
+
+}

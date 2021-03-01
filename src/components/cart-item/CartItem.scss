@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/buttons';
 
 .cart-item {
   width: 100%;
@@ -26,27 +27,10 @@
     flex: 0 0 20%;
   }
 
-  &__remove {
-    cursor: pointer;
-    font-size: 16px;
-    background: none;
-    color: $color-blue;
-    border: none;
-    outline: none;
-
-    &:hover {
-      color: $color-coral-red;
-    }
-  }
-
   &__details {
     margin-right: .5rem;
     font-size: 1.3rem;
     flex: 1;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: flex-start;
-    // justify-content: space-evenly;
   }
 
   &__name {

@@ -1,0 +1,63 @@
+@import '../../sass/variables';
+
+.checkout-item {
+  width: 100%;
+  min-height: 10rem;
+  border-bottom: 1px solid $color-blue;
+  padding: 1.5rem 0;
+  font-size: 1.6rem;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    position: absolute;
+    left: -6rem;
+    background-image: url('../../assets/warehouse.svg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+  }
+
+  &__name,
+  &__location,
+  &__quantity,
+  {
+    width: 25%;
+  }
+
+  &__price {
+    width: 17%;
+  }
+
+  &__name {
+    color: $color-blue;
+  }
+
+  &__quantity {
+    // padding-left: 2rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__counter {
+    margin-top: .5rem;
+    color: $color-blue;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+
+    .arrow {
+      cursor: pointer;
+      margin: 0 .7rem;
+
+    }
+
+    .value {
+    }
+  }
+}

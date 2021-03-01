@@ -1,7 +1,7 @@
 @import '../../sass/variables';
 
 .checkout {
-  width: 55%;
+  width: 65%;
   min-height: 80vh;
 
   display: flex;
@@ -20,10 +20,14 @@
 
   &__block {
     text-transform: capitalize;
-    width: 23%;
+    width: 25%;
 
     &--name {
       color: $color-blue;
+    }
+
+    &--price {
+      width: 17%;
     }
 
     &:last-child {
@@ -34,6 +38,6 @@
   &__total {
     margin-top: 3rem;
     margin-left: auto;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }

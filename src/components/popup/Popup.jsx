@@ -10,7 +10,7 @@ import { ReactComponent as Plus } from '../../assets/plus.svg';
 import { addToCart } from '../../redux/cart/cart.actions';
 
 const Popup = ({ location, togglePopupHidden }) => {
-  const { id, name, adress, availability, price } = location;
+  const { id, name, address, availability, price } = location;
   const [quantity, setQuantity] = useState(0);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const Popup = ({ location, togglePopupHidden }) => {
   return (
     <div id={`popup-${id}`} className="popup" onMouseLeave={togglePopupHidden}>
       <h4 className="popup__title">{name}</h4>
-      <p className="popup__text">{adress}</p>
+      <p className="popup__text">{address}</p>
 
       <div className="popup__section popup__section--availability">
         <Container className="popup__icon" />

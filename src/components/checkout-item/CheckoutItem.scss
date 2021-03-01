@@ -37,8 +37,6 @@
   }
 
   &__quantity {
-    // padding-left: 2rem;
-
     display: flex;
     flex-direction: column;
   }
@@ -55,9 +53,6 @@
       cursor: pointer;
       margin: 0 .7rem;
 
-    }
-
-    .value {
     }
   }
 }

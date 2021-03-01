@@ -12,6 +12,7 @@ import { addToCart } from '../../redux/cart/cart.actions';
 const Popup = ({ location, togglePopupHidden }) => {
   const { id, name, address, availability, price } = location;
   const [quantity, setQuantity] = useState(0);
+  const [buttonText, setButtonText] = useState('add to cart');
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
   const warehouse = cartItems.find((item) => item.id === location.id);
@@ -19,6 +20,7 @@ const Popup = ({ location, togglePopupHidden }) => {
   useEffect(() => {
     if (warehouse) {
       setQuantity(warehouse.quantity);
+      setButtonText('Added');
       location.quantity = warehouse.quantity;
     }
   }, []);
@@ -26,6 +28,7 @@ const Popup = ({ location, togglePopupHidden }) => {
   const addWarehouseToCart = () => {
     if (quantity) {
       location.quantity = quantity;
+      setButtonText('Added');
       dispatch(addToCart(location));
     }
   };
@@ -34,10 +37,16 @@ const Popup = ({ location, togglePopupHidden }) => {
     if (action === 'add') {
       if (availability > quantity) {
         setQuantity((prevQuantity) => (prevQuantity += 1));
+        if (warehouse) {
+          setButtonText('Update cart');
+        }
       }
     } else if (action === 'substract') {
       if (quantity > 0) {
         setQuantity((prevQuantity) => (prevQuantity -= 1));
+        if (warehouse) {
+          setButtonText('Update cart');
+        }
       }
     }
   };
@@ -57,24 +66,24 @@ const Popup = ({ location, togglePopupHidden }) => {
       <p>Book spaces:</p>
       <div className="popup__section popup__section--counter">
         <button
-          onClick={() => updateQuantity('add')}
-          type="button"
-          className="popup__change-btn popup__change-btn--add"
-        >
-          <Plus className="popup__change-icon" />
-        </button>
-        <p className="popup__count">{quantity}</p>
-        <button
           onClick={() => updateQuantity('substract')}
           type="button"
           className="popup__change-btn popup__change-btn--substract"
         >
           <Minus className="popup__change-icon" />
         </button>
+        <p className="popup__count">{quantity}</p>
+        <button
+          onClick={() => updateQuantity('add')}
+          type="button"
+          className="popup__change-btn popup__change-btn--add"
+        >
+          <Plus className="popup__change-icon" />
+        </button>
       </div>
       {quantity ? (
         <button onClick={addWarehouseToCart} type="button" className="btn popup__btn">
-          add to cart
+          {buttonText}
         </button>
       ) : null}
     </div>

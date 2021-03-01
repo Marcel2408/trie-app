@@ -31,6 +31,22 @@
   &:active {
     outline: none;
   }
+
+  &--pay {
+    background-color: $color-green;
+    border: 2px solid $color-green;
+
+    &:hover {
+      border: 2px solid $color-green;
+      color: $color-green;
+    }
+
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: .6;
 }
 
 .btn-remove {

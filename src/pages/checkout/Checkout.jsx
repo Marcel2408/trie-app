@@ -27,10 +27,12 @@ const Checkout = () => {
         </div>
       </div>
       {cartItems.map((item) => (
-        <CheckoutItem cartItem={item} />
+        <CheckoutItem key={item.id} cartItem={item} />
       ))}
       <div className="checkout__total">
-        <span>TOTAL: {totalPrice} €</span>
+        <button type="button" className={`btn btn--pay ${!totalPrice ? 'disabled' : ''}`}>
+          Purchase {totalPrice} €
+        </button>
       </div>
     </div>
   );

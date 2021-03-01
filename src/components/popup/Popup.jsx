@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import './Popup.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Container } from '../../assets/container.svg';
 import { ReactComponent as Minus } from '../../assets/minus.svg';
 import { ReactComponent as Plus } from '../../assets/plus.svg';
@@ -12,21 +12,22 @@ import { addToCart } from '../../redux/cart/cart.actions';
 const Popup = ({ location, togglePopupHidden }) => {
   const { id, name, adress, availability } = location;
   const [quantity, setQuantity] = useState(0);
-  // const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
-  // const warehouse = cartItems.find((item) => item.id === location.id);
+  const warehouse = cartItems.find((item) => item.id === location.id);
 
   useEffect(() => {
-    // console.log('warehouse --> ', warehouse);
-    // if (warehouse) {
-    //   setQuantity(warehouse.quantity);
-    //   location.quantity = warehouse.quantity;
-    // }
-  });
+    if (warehouse) {
+      setQuantity(warehouse.quantity);
+      location.quantity = warehouse.quantity;
+    }
+  }, []);
 
   const addWarehouseToCart = () => {
-    location.quantity = quantity;
-    dispatch(addToCart(location));
+    if (quantity) {
+      location.quantity = quantity;
+      dispatch(addToCart(location));
+    }
   };
 
   const updateQuantity = (action) => {
@@ -48,7 +49,7 @@ const Popup = ({ location, togglePopupHidden }) => {
 
       <div className="popup__section popup__section--availability">
         <Container className="popup__icon" />
-        <p className="popup__text">{availability} space(s)</p>
+        <p className="popup__text">{availability - quantity} space(s)</p>
       </div>
       <p>Book spaces:</p>
       <div className="popup__section popup__section--counter">
@@ -68,9 +69,11 @@ const Popup = ({ location, togglePopupHidden }) => {
           <Minus className="popup__change-icon" />
         </button>
       </div>
-      <button onClick={addWarehouseToCart} type="button" className="btn popup__btn">
-        add to cart
-      </button>
+      {quantity ? (
+        <button onClick={addWarehouseToCart} type="button" className="btn popup__btn">
+          add to cart
+        </button>
+      ) : null}
     </div>
   );
 };

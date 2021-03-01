@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import CartItem from '../cart-item/CartItem';
 import './CartDropdown.scss';
 
-const CartDropdown = () => {
+const CartDropdown = ({ history }) => {
   const cartItems = useSelector((state) => selectCartItems(state));
   const dispatch = useDispatch();
 
@@ -25,11 +26,11 @@ const CartDropdown = () => {
           <span className="empty-message">Your cart is empty</span>
         )}
       </div>
-      <Link className="btn" to="/">
+      <button type="button" className="btn" onClick={() => history.push('/checkout')}>
         GO TO CHECKOUT
-      </Link>
+      </button>
     </div>
   );
 };
 
-export default CartDropdown;
+export default withRouter(CartDropdown);

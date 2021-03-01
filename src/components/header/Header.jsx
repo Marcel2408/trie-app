@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="header section container">
       <div className="options">
-        <Link className="option btn" to="/">
+        <Link className="option btn" to="/map">
           BACK TO MAP
         </Link>
       </div>
